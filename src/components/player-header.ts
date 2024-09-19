@@ -15,7 +15,7 @@ class PlayerHeader extends LitElement {
     this.activePlayer = this.store.activePlayer;
 
     const speakerList = getSpeakerList(this.activePlayer, this.store.predefinedGroups);
-    let artist = this.activePlayer.getArtist() || '';
+    let artist = this.activePlayer.getCurrentArtist() || '';
     let song = this.activePlayer.getCurrentTrack();
     song = song || this.config.labelWhenNoMediaIsSelected || 'No media selected';
     if (this.config.showSourceInPlayer && this.activePlayer.attributes.source) {
@@ -25,7 +25,7 @@ class PlayerHeader extends LitElement {
       <div class="entity">${speakerList}</div>
       <div class="songDetails">
         <div class="song">${song}</div>
-        <div class="author">${author}</div>
+        <div class="artist">${artist}</div>
       </div>
       <div class="artist-album">${this.activePlayer.attributes.media_album_name}</div>
       <mxmp-progress .store=${this.store}></mxmp-progress>
