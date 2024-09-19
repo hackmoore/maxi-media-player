@@ -39,8 +39,12 @@ export class MediaPlayer {
     return this.attributes.is_volume_muted && (!checkMembers || this.members.every((member) => member.isMuted(false)));
   }
 
+  getCurrentArtist() {
+    return `${this.attributes.media_artist || ''}`.replace(/^ - | - $/g, '');
+  }
+
   getCurrentTrack() {
-    return `${this.attributes.media_artist || ''} - ${this.attributes.media_title || ''}`.replace(/^ - | - $/g, '');
+    return `${this.attributes.media_title || ''}`.replace(/^ - | - $/g, '');
   }
   private getEntityName(hassEntity: HassEntity, config: CardConfig) {
     const name = hassEntity.attributes.friendly_name || '';
