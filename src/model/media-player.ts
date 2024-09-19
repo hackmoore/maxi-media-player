@@ -39,6 +39,10 @@ export class MediaPlayer {
     return this.attributes.is_volume_muted && (!checkMembers || this.members.every((member) => member.isMuted(false)));
   }
 
+  getCurrentArtist() {
+    return this.attributes.media_artist || '';
+  }
+
   getCurrentTrack() {
     return `${this.attributes.media_artist || ''} - ${this.attributes.media_title || ''}`.replace(/^ - | - $/g, '');
   }
